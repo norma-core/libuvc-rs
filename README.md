@@ -1,5 +1,6 @@
 # norm-uvc
 
+[![crates.io](https://img.shields.io/crates/v/norm-uvc.svg)](https://crates.io/crates/norm-uvc)
 [![license](https://img.shields.io/crates/l/norm-uvc.svg)](https://github.com/norma-core/libuvc-rs/blob/master/LICENSE)
 
 Safe Rust wrapper around the [norma-core libuvc fork](https://github.com/norma-core/libuvc) with extended timestamp support.
