@@ -1,4 +1,4 @@
-use uvc_sys::*;
+use norm_uvc_sys::*;
 
 #[derive(Debug, Copy, Clone)]
 /// Format one can request a stream to produce

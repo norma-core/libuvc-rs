@@ -1,21 +1,20 @@
 [package]
-name = "uvc-sys"
+name = "norm-uvc-sys"
 description = "Raw wrapper of libuvc"
-version = "0.3.0"
-authors = ["Magnus Ulimoen <flymagnus@gmail.com>"]
+version = "0.3.0-nc"
+authors = ["Magnus Ulimoen <flymagnus@gmail.com>", "NormaCore.Dev"]
 links = "uvc"
 build = "build.rs"
 license = "MIT"
-repository = "https://github.com/mulimoen/libuvc-rs.git"
+repository = "https://github.com/norma-core/libuvc-rs.git"
 categories = ["external-ffi-bindings", "multimedia::video"]
-edition = "2021"
+edition = "2024"
 
 [features]
-vendor = ["uvc-src"]
-uvc_debugging = ["uvc-src/uvc_debugging"]
+uvc_debugging = ["norm-uvc-src/uvc_debugging"]
 
 [dependencies]
-uvc-src = { path = "../uvc-src", version = "0.3.0", optional = true, features = ["jpeg"] }
+norm-uvc-src = { path = "../uvc-src", version = "0.3.0-nc" }
 
 [build-dependencies]
-bindgen = "0.70.1"
+bindgen = "0.72.1"

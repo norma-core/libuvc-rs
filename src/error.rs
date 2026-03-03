@@ -24,54 +24,54 @@ pub enum Error {
     Overflow,
     Pipe,
     Timeout,
-    Unknown(uvc_sys::uvc_error_t),
+    Unknown(norm_uvc_sys::uvc_error_t),
 }
 
-impl From<uvc_sys::uvc_error_t> for Error {
-    fn from(code: uvc_sys::uvc_error_t) -> Self {
+impl From<norm_uvc_sys::uvc_error_t> for Error {
+    fn from(code: norm_uvc_sys::uvc_error_t) -> Self {
         match code {
-            uvc_sys::uvc_error_UVC_SUCCESS => Error::Success,
-            uvc_sys::uvc_error_UVC_ERROR_ACCESS => Error::Access,
-            uvc_sys::uvc_error_UVC_ERROR_BUSY => Error::Busy,
-            uvc_sys::uvc_error_UVC_ERROR_CALLBACK_EXISTS => Error::CallbackExists,
-            uvc_sys::uvc_error_UVC_ERROR_INTERRUPTED => Error::Interrupted,
-            uvc_sys::uvc_error_UVC_ERROR_INVALID_DEVICE => Error::InvalidDevice,
-            uvc_sys::uvc_error_UVC_ERROR_INVALID_MODE => Error::InvalidMode,
-            uvc_sys::uvc_error_UVC_ERROR_INVALID_PARAM => Error::InvalidParam,
-            uvc_sys::uvc_error_UVC_ERROR_IO => Error::IO,
-            uvc_sys::uvc_error_UVC_ERROR_NOT_FOUND => Error::NotFound,
-            uvc_sys::uvc_error_UVC_ERROR_NOT_SUPPORTED => Error::NotSupported,
-            uvc_sys::uvc_error_UVC_ERROR_NO_DEVICE => Error::NoDevice,
-            uvc_sys::uvc_error_UVC_ERROR_NO_MEM => Error::NoMem,
-            uvc_sys::uvc_error_UVC_ERROR_OTHER => Error::Other,
-            uvc_sys::uvc_error_UVC_ERROR_OVERFLOW => Error::Overflow,
-            uvc_sys::uvc_error_UVC_ERROR_PIPE => Error::Pipe,
-            uvc_sys::uvc_error_UVC_ERROR_TIMEOUT => Error::Timeout,
+            norm_uvc_sys::uvc_error_UVC_SUCCESS => Error::Success,
+            norm_uvc_sys::uvc_error_UVC_ERROR_ACCESS => Error::Access,
+            norm_uvc_sys::uvc_error_UVC_ERROR_BUSY => Error::Busy,
+            norm_uvc_sys::uvc_error_UVC_ERROR_CALLBACK_EXISTS => Error::CallbackExists,
+            norm_uvc_sys::uvc_error_UVC_ERROR_INTERRUPTED => Error::Interrupted,
+            norm_uvc_sys::uvc_error_UVC_ERROR_INVALID_DEVICE => Error::InvalidDevice,
+            norm_uvc_sys::uvc_error_UVC_ERROR_INVALID_MODE => Error::InvalidMode,
+            norm_uvc_sys::uvc_error_UVC_ERROR_INVALID_PARAM => Error::InvalidParam,
+            norm_uvc_sys::uvc_error_UVC_ERROR_IO => Error::IO,
+            norm_uvc_sys::uvc_error_UVC_ERROR_NOT_FOUND => Error::NotFound,
+            norm_uvc_sys::uvc_error_UVC_ERROR_NOT_SUPPORTED => Error::NotSupported,
+            norm_uvc_sys::uvc_error_UVC_ERROR_NO_DEVICE => Error::NoDevice,
+            norm_uvc_sys::uvc_error_UVC_ERROR_NO_MEM => Error::NoMem,
+            norm_uvc_sys::uvc_error_UVC_ERROR_OTHER => Error::Other,
+            norm_uvc_sys::uvc_error_UVC_ERROR_OVERFLOW => Error::Overflow,
+            norm_uvc_sys::uvc_error_UVC_ERROR_PIPE => Error::Pipe,
+            norm_uvc_sys::uvc_error_UVC_ERROR_TIMEOUT => Error::Timeout,
             x => Error::Unknown(x),
         }
     }
 }
 
-impl Into<uvc_sys::uvc_error_t> for Error {
-    fn into(self) -> uvc_sys::uvc_error_t {
+impl Into<norm_uvc_sys::uvc_error_t> for Error {
+    fn into(self) -> norm_uvc_sys::uvc_error_t {
         match self {
-            Error::Success => uvc_sys::uvc_error_UVC_SUCCESS,
-            Error::Access => uvc_sys::uvc_error_UVC_ERROR_ACCESS,
-            Error::Busy => uvc_sys::uvc_error_UVC_ERROR_BUSY,
-            Error::CallbackExists => uvc_sys::uvc_error_UVC_ERROR_CALLBACK_EXISTS,
-            Error::Interrupted => uvc_sys::uvc_error_UVC_ERROR_INTERRUPTED,
-            Error::InvalidDevice => uvc_sys::uvc_error_UVC_ERROR_INVALID_DEVICE,
-            Error::InvalidMode => uvc_sys::uvc_error_UVC_ERROR_INVALID_MODE,
-            Error::InvalidParam => uvc_sys::uvc_error_UVC_ERROR_INVALID_PARAM,
-            Error::IO => uvc_sys::uvc_error_UVC_ERROR_IO,
-            Error::NotFound => uvc_sys::uvc_error_UVC_ERROR_NOT_FOUND,
-            Error::NotSupported => uvc_sys::uvc_error_UVC_ERROR_NOT_SUPPORTED,
-            Error::NoDevice => uvc_sys::uvc_error_UVC_ERROR_NO_DEVICE,
-            Error::NoMem => uvc_sys::uvc_error_UVC_ERROR_NO_MEM,
-            Error::Other => uvc_sys::uvc_error_UVC_ERROR_OTHER,
-            Error::Overflow => uvc_sys::uvc_error_UVC_ERROR_OVERFLOW,
-            Error::Pipe => uvc_sys::uvc_error_UVC_ERROR_PIPE,
-            Error::Timeout => uvc_sys::uvc_error_UVC_ERROR_TIMEOUT,
+            Error::Success => norm_uvc_sys::uvc_error_UVC_SUCCESS,
+            Error::Access => norm_uvc_sys::uvc_error_UVC_ERROR_ACCESS,
+            Error::Busy => norm_uvc_sys::uvc_error_UVC_ERROR_BUSY,
+            Error::CallbackExists => norm_uvc_sys::uvc_error_UVC_ERROR_CALLBACK_EXISTS,
+            Error::Interrupted => norm_uvc_sys::uvc_error_UVC_ERROR_INTERRUPTED,
+            Error::InvalidDevice => norm_uvc_sys::uvc_error_UVC_ERROR_INVALID_DEVICE,
+            Error::InvalidMode => norm_uvc_sys::uvc_error_UVC_ERROR_INVALID_MODE,
+            Error::InvalidParam => norm_uvc_sys::uvc_error_UVC_ERROR_INVALID_PARAM,
+            Error::IO => norm_uvc_sys::uvc_error_UVC_ERROR_IO,
+            Error::NotFound => norm_uvc_sys::uvc_error_UVC_ERROR_NOT_FOUND,
+            Error::NotSupported => norm_uvc_sys::uvc_error_UVC_ERROR_NOT_SUPPORTED,
+            Error::NoDevice => norm_uvc_sys::uvc_error_UVC_ERROR_NO_DEVICE,
+            Error::NoMem => norm_uvc_sys::uvc_error_UVC_ERROR_NO_MEM,
+            Error::Other => norm_uvc_sys::uvc_error_UVC_ERROR_OTHER,
+            Error::Overflow => norm_uvc_sys::uvc_error_UVC_ERROR_OVERFLOW,
+            Error::Pipe => norm_uvc_sys::uvc_error_UVC_ERROR_PIPE,
+            Error::Timeout => norm_uvc_sys::uvc_error_UVC_ERROR_TIMEOUT,
             Error::Unknown(x) => x,
         }
     }
@@ -79,7 +79,7 @@ impl Into<uvc_sys::uvc_error_t> for Error {
 
 impl fmt::Display for Error {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        let strerror = unsafe { uvc_sys::uvc_strerror((*self).into()) };
+        let strerror = unsafe { norm_uvc_sys::uvc_strerror((*self).into()) };
         if strerror.is_null() {
             return write!(f, "Unknown error");
         }

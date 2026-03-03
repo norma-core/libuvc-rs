@@ -11,6 +11,15 @@ const VERSION: Version = Version {
 };
 
 fn main() {
+    // Only build for Linux targets - norma-core libuvc fork uses CLOCK_BOOTTIME
+    let target_os = std::env::var("CARGO_CFG_TARGET_OS").unwrap_or_default();
+    if target_os != "linux" {
+        panic!(
+            "norm-uvc only supports Linux targets (uses CLOCK_BOOTTIME), got target_os: {}",
+            target_os
+        );
+    }
+
     println!("cargo:rerun-if-changed=build.rs");
     let mut builder = cc::Build::new();
     builder.warnings(false);

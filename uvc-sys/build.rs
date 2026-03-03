@@ -4,21 +4,19 @@ use std::env;
 use std::path::PathBuf;
 
 fn main() {
-    let mut includedir = None;
-    if std::env::var_os("CARGO_FEATURE_VENDOR").is_some() {
-        includedir = Some(std::env::var("DEP_UVCSRC_INCLUDE").unwrap());
-    } else {
-        println!("cargo:rustc-link-lib=uvc");
-        if cfg!(target_os = "freebsd") {
-            includedir = Some("/usr/local/include".to_owned());
-        }
+    // Only build for Linux targets - norma-core libuvc fork uses CLOCK_BOOTTIME
+    let target_os = std::env::var("CARGO_CFG_TARGET_OS").unwrap_or_default();
+    if target_os != "linux" {
+        panic!(
+            "norm-uvc only supports Linux targets (uses CLOCK_BOOTTIME), got target_os: {}",
+            target_os
+        );
     }
 
-    let mut builder = bindgen::Builder::default();
+    // Use the generated headers from norm-uvc-src build (includes libuvc_config.h)
+    let vendored_include = std::env::var("DEP_UVCSRC_INCLUDE").expect("DEP_UVCSRC_INCLUDE not set");
 
-    if let Some(include) = includedir {
-        builder = builder.clang_arg(format!("-I{}", include));
-    }
+    let builder = bindgen::Builder::default().clang_arg(format!("-I{}", vendored_include));
 
     let bindings = builder
         .header("wrapper.h")

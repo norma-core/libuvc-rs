@@ -1,12 +1,12 @@
 [package]
-name = "uvc-src"
-version = "0.3.0"
-authors = ["Magnus Ulimoen <flymagnus@gmail.com>"]
-edition = "2021"
+name = "norm-uvc-src"
+version = "0.3.0-nc"
+authors = ["Magnus Ulimoen <flymagnus@gmail.com>", "NormaCore.Dev"]
+edition = "2024"
 license-file = "source/LICENSE.txt"
 build = "build.rs"
-repository = "https://github.com/mulimoen/libuvc-rs"
-description = "Vendored version of libuvc"
+repository = "https://github.com/norma-core/libuvc-rs"
+description = "Vendored norma-core libuvc fork with CLOCK_BOOTTIME timestamps (Linux only)"
 links = "uvcsrc"
 
 [features]
@@ -18,4 +18,4 @@ mozjpeg-sys = { version = "2.2.1", default-features = false, optional = true }
 libusb-sys = { version = "0.7.0", package = "libusb1-sys" }
 
 [build-dependencies]
-cc = "1.0.61"
+cc = "1.2.56"

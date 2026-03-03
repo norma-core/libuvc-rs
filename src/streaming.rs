@@ -1,4 +1,4 @@
-use uvc_sys::*;
+use norm_uvc_sys::*;
 
 use crate::device::DeviceHandle;
 use crate::error::{Error, Result};

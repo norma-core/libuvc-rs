@@ -1,23 +1,38 @@
-# Safe rust wrapper around [libuvc](https://int80k.com/libuvc/doc/)
+# norm-uvc
 
-[![crates.io](https://img.shields.io/crates/v/uvc.svg)](https://crates.io/crates/uvc)
-[![license](https://img.shields.io/crates/l/uvc.svg)](https://github.com/mulimoen/libuvc-rs/blob/master/LICENSE)
+[![license](https://img.shields.io/crates/l/norm-uvc.svg)](https://github.com/norma-core/libuvc-rs/blob/master/LICENSE)
+
+Safe Rust wrapper around the [norma-core libuvc fork](https://github.com/norma-core/libuvc) with extended timestamp support.
+
+## ⚠️ Linux Only
+
+This library **only supports Linux** as it uses `CLOCK_BOOTTIME` timestamps from the norma-core libuvc fork.
 
 ## What does this library do?
 
+This library provides access to webcams and allows capturing video streams with precise timestamps.
 
-This library gives access to the webcam, and allows one to capture the video stream. An example of how to use this library can be found in the examples directory.
+### Permissions
 
-An error such as `Access` might be due to the program not having read/write access to the usb device. You can grant access to all users by changing the device permissions, for example with
+An `Access` error might be due to insufficient USB device permissions. Grant access with:
 
-```
+```bash
 chmod 0666 /dev/bus/usb/{BUS}/{DEVICE}
 ```
 
-where BUS and DEVICE can be found with `lsusb` or by running the `mirror` example.
+Find BUS and DEVICE with `lsusb`.
+
+## Features
+
+- Always vendors libuvc source (no system dependency)
+- Extended timestamp support via `CLOCK_BOOTTIME`
+- `uvc_debugging` feature for detailed logging
 
 ## Documentation
-Documentation can be created with `cargo doc`
 
-## Dependencies
-To use this crate, the `libuvc` native dependency must be installed, or vendored using the `vendor` feature. Disable the default-features and choose the feature `vendor` or `system` to select supplier.
+Generate documentation with `cargo doc`
+
+## Credits
+
+Forked from [libuvc-rs](https://github.com/mulimoen/libuvc-rs) by Magnus Ulimoen.
+Extended with timestamp support by NormaCore.Dev.

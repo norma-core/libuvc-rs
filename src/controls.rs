@@ -1,6 +1,6 @@
 use crate::device::DeviceHandle;
 use crate::error::{Error, Result};
-use uvc_sys::*;
+use norm_uvc_sys::*;
 
 #[derive(Copy, Clone, Debug)]
 pub enum ScanningMode {
